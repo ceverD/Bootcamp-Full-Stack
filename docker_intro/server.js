@@ -4,13 +4,6 @@ const bodyParser = require('body-parse');
 
 const { promisify } = requiere('util');
 
-const MongoClient = requiere('mondodb').MongoClient;
-
-const url = 'mongodb://mongodb-container:27017'
-
-const dbName = 'mock_database';
-const collectionName = 'users';
-
 const hostname = '0.0.0.0';
 const port = 8080;
 
@@ -40,9 +33,12 @@ Your implementation here
 */
 
 // // Connect to mongodb server
-// const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 // /* Your url connection to mongodb container */
-// const url = ...;
+const url = 'mongodb://mongodb-container:27017'
+
+const dbName = 'mock_database';
+const collectionName = 'users';
 
 // GET method route
 // Retrieve all documents in collection
