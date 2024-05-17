@@ -35,7 +35,7 @@ Your implementation here
 // // Connect to mongodb server
 const MongoClient = require('mongodb').MongoClient;
 // /* Your url connection to mongodb container */
-const url = 'mongodb://mongodb-container:27017'
+const url = 'mongodb://mongodb:27017'
 
 const dbName = 'mock_database';
 const collectionName = 'users';
