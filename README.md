@@ -16,8 +16,8 @@ Dado que en la actividad se pide que la app, desplegada en un Docker se comuniqu
 se pueden seguir los siguientes pasos para que la app se comunique con el container de mongo.
 
 ```bash
-docker network create <my-network>
-docker run --name <container-name> --hostname <your-hostname> -d -p 27017:27017 --network <my-network> mongo
+docker network create node-network
+docker run --name mongodb --hostname mongodb-container -d -p 27017:27017 --network node-network mongo
 ```
 
 Cada alumno puede incluir en la base de datos la información que desee. 
@@ -25,8 +25,8 @@ De todas formas, en este repo se deja una colección de muestra en la carpeta `d
 
 Se pueden seguir los siguientes pasos para, una vez esté corriendo mongo en le container correspondiente, se incorporen los documentos a una bbdd mockeada.
 ```bash 
-docker cp <your-path-to-db_sample/users.json> <container-name>:/users.json
-docker exec -it <container-name> mongoimport --db <your-database-name> --collection <your-collection-name> --file /users.json --jsonArray
+docker cp init-mongodb/data/users.json mongodb:/users.json
+docker exec -it mongodb mongoimport --db mock_database --collection users --file /users.json --jsonArray
 ```
 
 Se puede levantar la imagen de mongodb con la colección de usuarios y correrá la API en node con el siguiente comando:
