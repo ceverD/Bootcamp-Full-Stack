@@ -44,7 +44,7 @@ const collectionName = 'users';
 // Retrieve all documents in collection
 app.get('/api/get/all', async function(req, res){
     try {
-        const client = await MongoClient.connnect(url);
+        const client = await MongoClient.connect(url);
         const dbo = client.db(dbName);
         const query = {};
         const result = await dbo.collection(collectionName).find(query).toArray();
@@ -65,7 +65,7 @@ app.get('/api/get/all', async function(req, res){
 // ...
 app.get('/api/get', async function(req, res) {
     try {
-        const client = await MongoClient.connnect(url);
+        const client = await MongoClient.connect(url);
         const dbo = client.db(dbName);
         const gender = req.query.gender;
         if (!gender) {
@@ -100,7 +100,7 @@ app.put('/api/put', async function(req, res){
     try {
 
         if (expectedFields.every(field => Object.keys(req.body).includes(field))) {
-            const client = await MongoClient.connnect(url);
+            const client = await MongoClient.connect(url);
             const dbo = client.db(dbName);
             const query = { email: req.body.email };
             const updateFields = req.body;
@@ -128,7 +128,7 @@ If found, document deleted (200 OK) */
 app.delete('/api/delete', async function(req, res) {
     const email = req.body.email;
 
-    MongoClient.connnect(url)
+    MongoClient.connect(url)
         .then(async (client) => {
             const dbo = client.db(dbName);
             const query = { email: email };
